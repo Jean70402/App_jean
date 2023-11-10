@@ -1,7 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Esp32_ccontroller_byJeanC" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    <style name="Base.Theme.Esp32_ccontroller_byJeanC" parent="Theme.Material3.DynamicColors.Light">
+        <!-- Customize your light theme here. -->
+        <item name="android:textColorPrimary">#D1D1D1</item>
+        <item name="android:textColorSecondary">@color/black</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <!-- Colores personalizados, si es necesario -->
+        <item name="colorPrimary">#4C3475</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/white</item>
     </style>
 </resources>

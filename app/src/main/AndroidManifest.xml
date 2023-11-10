@@ -16,19 +16,25 @@
         android:label="Esp32Control - By Jean704"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Esp32_ccontroller_byJeanC"
+        android:theme="@style/Base.Theme.Esp32_ccontroller_byJeanC"
         tools:targetApi="31">
         <activity
-            android:name=".ControlActivity"
-            android:screenOrientation="landscape"
+            android:name=".Wifi_activity"
             android:exported="false" />
-
+        <activity
+            android:name=".Selector"
+            android:exported="false" />
+        <activity
+            android:name=".ControlActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="landscape"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

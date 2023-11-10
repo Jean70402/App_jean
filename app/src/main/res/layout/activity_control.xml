@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background5"
     tools:context=".ControlActivity">
 
     <LinearLayout
@@ -63,6 +64,7 @@
                     <LinearLayout
                         android:layout_width="216dp"
                         android:layout_height="match_parent"
+                        android:background="#795A5A5A"
                         android:orientation="vertical">
 
                         <TextView
@@ -70,32 +72,48 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:outlineProvider="bounds"
                             android:text="X= "
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/distanciaY"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:outlineProvider="bounds"
                             android:text="Y= "
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/angle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:outlineProvider="bounds"
                             android:text="Angulo= "
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/distancia"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:outlineProvider="bounds"
                             android:text="Distancia= "
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 

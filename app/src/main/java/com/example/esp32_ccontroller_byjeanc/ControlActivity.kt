@@ -2,10 +2,15 @@ package com.example.esp32_ccontroller_byjeanc
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
+import android.view.View
+import android.view.WindowInsets
+import android.view.WindowInsetsController
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -16,11 +21,18 @@ import java.io.IOException
 
 class ControlActivity : AppCompatActivity() {
     //lateinit var blue:BluetoothJhr
-    var dir_anterior=0
+    var dir_anterior = 0
 
     @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+        setTheme(android.R.style.Theme_NoTitleBar_Fullscreen)
+        actionBar?.hide()
+        supportActionBar?.hide()
         setContentView(R.layout.activity_control)
 
         val idBtnLuz_1on: Button = findViewById(R.id.idBtnLuz_1on)
@@ -37,41 +49,33 @@ class ControlActivity : AppCompatActivity() {
         val angle: TextView = findViewById(R.id.angle)
         val distancia: TextView = findViewById(R.id.distancia)
 
-        joystickJhr.setOnTouchListener { view, motionEvent->
+        joystickJhr.setOnTouchListener { view, motionEvent ->
             joystickJhr.move(motionEvent)
-            distanciaX.text= "X= "+joystickJhr.joyX().toString()
-            distanciaY.text= "Y= "+joystickJhr.joyX().toString()
-            angle.text= "Angulo= "+joystickJhr.angle().toString()
-            distancia.text= "Distancia= "+joystickJhr.distancia().toString()
-            var dir =joystickJhr.direccion
+            distanciaX.text = "X= " + joystickJhr.joyX().toString()
+            distanciaY.text = "Y= " + joystickJhr.joyX().toString()
+            angle.text = "Angulo= " + joystickJhr.angle().toString()
+            distancia.text = "Distancia= " + joystickJhr.distancia().toString()
+            var dir = joystickJhr.direccion
             Log.d("Joystick", "Dirección actual: $dir")
-            if(dir_anterior!=dir){
-                dir_anterior=dir
-                if(dir==joystickJhr.stick_up()){
+            if (dir_anterior != dir) {
+                dir_anterior = dir
+                if (dir == joystickJhr.stick_up()) {
                     BluetoothManagerMine.sendCommand(MainActivity.m_bluetoothSocket, "V")
-                }
-                else if(dir==joystickJhr.stick_upRight()){
+                } else if (dir == joystickJhr.stick_upRight()) {
                     BluetoothManagerMine.sendCommand(MainActivity.m_bluetoothSocket, "X")
-                }
-                else if(dir==joystickJhr.stick_right()){
+                } else if (dir == joystickJhr.stick_right()) {
                     BluetoothManagerMine.sendCommand(MainActivity.m_bluetoothSocket, "Y")
-                }
-                else if(dir==joystickJhr.stick_downRight()){
+                } else if (dir == joystickJhr.stick_downRight()) {
                     BluetoothManagerMine.sendCommand(MainActivity.m_bluetoothSocket, "Z")
-                }
-                else if(dir==joystickJhr.stick_down()){
+                } else if (dir == joystickJhr.stick_down()) {
                     BluetoothManagerMine.sendCommand(MainActivity.m_bluetoothSocket, "E")
-                }
-                else if(dir==joystickJhr.stick_downLeft()){
+                } else if (dir == joystickJhr.stick_downLeft()) {
                     BluetoothManagerMine.sendCommand(MainActivity.m_bluetoothSocket, "F")
-                }
-                else if(dir==joystickJhr.stick_left()){
+                } else if (dir == joystickJhr.stick_left()) {
                     BluetoothManagerMine.sendCommand(MainActivity.m_bluetoothSocket, "G")
-                }
-                else if(dir==joystickJhr.stick_upLeft()){
+                } else if (dir == joystickJhr.stick_upLeft()) {
                     BluetoothManagerMine.sendCommand(MainActivity.m_bluetoothSocket, "H")
-                }
-                else if(dir==joystickJhr.stick_none()){
+                } else if (dir == joystickJhr.stick_none()) {
                     BluetoothManagerMine.sendCommand(MainActivity.m_bluetoothSocket, "N")
                 }
             }
@@ -79,12 +83,31 @@ class ControlActivity : AppCompatActivity() {
         }
 
 
-
         // Botones de control de luces y envío de mensajes
-        idBtnLuz_1on.setOnClickListener { BluetoothManagerMine.sendCommand(MainActivity.m_bluetoothSocket, "A") }
-        idBtnLuz_1off.setOnClickListener { BluetoothManagerMine.sendCommand(MainActivity.m_bluetoothSocket, "B") }
-        idBtnLuz_2on.setOnClickListener { BluetoothManagerMine.sendCommand(MainActivity.m_bluetoothSocket, "C") }
-        idBtnLuz_2off.setOnClickListener { BluetoothManagerMine.sendCommand(MainActivity.m_bluetoothSocket, "D") }
+        idBtnLuz_1on.setOnClickListener {
+            BluetoothManagerMine.sendCommand(
+                MainActivity.m_bluetoothSocket,
+                "A"
+            )
+        }
+        idBtnLuz_1off.setOnClickListener {
+            BluetoothManagerMine.sendCommand(
+                MainActivity.m_bluetoothSocket,
+                "B"
+            )
+        }
+        idBtnLuz_2on.setOnClickListener {
+            BluetoothManagerMine.sendCommand(
+                MainActivity.m_bluetoothSocket,
+                "C"
+            )
+        }
+        idBtnLuz_2off.setOnClickListener {
+            BluetoothManagerMine.sendCommand(
+                MainActivity.m_bluetoothSocket,
+                "D"
+            )
+        }
 
 
 //        idBtnEnviar.setOnClickListener {
@@ -105,6 +128,8 @@ class ControlActivity : AppCompatActivity() {
 
         }
     }
+
+
 //    private fun sendCommand(input: String) {
 //        if (MainActivity.m_bluetoothSocket != null) {
 //            try {

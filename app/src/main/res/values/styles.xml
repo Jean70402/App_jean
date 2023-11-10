@@ -1,0 +1,18 @@
+<!-- res/values/styles.xml -->
+
+<resources>
+
+    <!-- Definición de un estilo llamado "MiEstilo" -->
+    <style name="MiEstilo" >
+        <!-- Personalizar otros atributos según tus necesidades -->
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <!-- Colores personalizados, si es necesario -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+</resources>

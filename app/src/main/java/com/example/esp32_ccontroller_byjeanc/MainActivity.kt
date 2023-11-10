@@ -13,6 +13,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -32,12 +33,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
+
      lateinit var mBtAdapter: BluetoothAdapter
      lateinit var mAddressDevices: ArrayAdapter<String>
      lateinit var mNameDevices: ArrayAdapter<String>
 
      lateinit var lottieAnimationView: LottieAnimationView
-     var isConnected: Boolean = false
     companion object {
          val m_myUUID: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
         var m_bluetoothSocket: BluetoothSocket? = null
@@ -56,7 +57,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+        setTheme(android.R.style.Theme_NoTitleBar_Fullscreen)
+        actionBar?.hide()
+        supportActionBar?.hide()
         mAddressDevices = ArrayAdapter(this, android.R.layout.simple_list_item_1)
         mNameDevices = ArrayAdapter(this, android.R.layout.simple_list_item_1)
 

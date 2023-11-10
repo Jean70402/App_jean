@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background5"
+    android:backgroundTint="#2E3231"
+    android:backgroundTintMode="screen"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -50,6 +53,8 @@
                 android:id="@+id/idSpinDisp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:background="#F8F8F8"
+                android:backgroundTintMode="add"
                 android:contentDescription="dispositivos" />
 
         </LinearLayout>
