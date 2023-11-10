@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -19,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Esp32_ccontroller_byJeanC"
         tools:targetApi="31">
+        <activity
+            android:name=".ControlActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
