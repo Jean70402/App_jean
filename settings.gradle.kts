@@ -1,3 +1,4 @@
+
 pluginManagement {
     repositories {
         google()
@@ -6,6 +7,7 @@ pluginManagement {
     }
 }
 dependencyResolutionManagement {
+
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
@@ -15,4 +17,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "Esp32_ccontroller_byJeanC"
 include(":app")
- 
