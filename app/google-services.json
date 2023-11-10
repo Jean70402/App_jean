@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "202176296223",
+    "project_id": "esp32-bt-controller-jean",
+    "storage_bucket": "esp32-bt-controller-jean.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202176296223:android:6957a72b866b458021ec2a",
+        "android_client_info": {
+          "package_name": "com.example.esp32_ccontroller_byjeanc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB03dBzOPOxNw0ObOZoDamNyRuICGr6y1Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
