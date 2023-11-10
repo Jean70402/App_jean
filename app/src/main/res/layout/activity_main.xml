@@ -18,6 +18,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="vertical"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -49,6 +54,11 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:orientation="vertical"></LinearLayout>
+
         <Button
             android:id="@+id/idBtnConect"
             android:layout_width="match_parent"
@@ -63,7 +73,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="80dp"
             android:orientation="vertical">
 
             <com.airbnb.lottie.LottieAnimationView
@@ -72,93 +82,18 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Luz 1"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/idBtnLuz_1on"
+                android:id="@+id/irControl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="On" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/idBtnLuz_1off"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Off" />
+                android:text="Ir a Controles" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Luz 2"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/idBtnLuz_2on"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="On" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/idBtnLuz_2off"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Off" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Texto a Enviar"
-            android:textAlignment="viewStart"
-            android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/idTextOut"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:ems="10"
-            android:hint="Texto a Enviar"
-            android:inputType="text" />
-
-        <Button
-            android:id="@+id/idBtnEnviar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Enviar texto" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
