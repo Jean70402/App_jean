@@ -1,9 +1,69 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Wifi_activity">
+    tools:context=".MainActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editTextIP"
+                    android:layout_width="600dp"
+                    android:layout_height="match_parent"
+                    android:hint="Enter ESP32 IP" />
+
+                <Button
+                    android:id="@+id/buttonConnect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/editTextIP"
+                    android:layout_marginTop="16dp"
+                    android:text="Connect" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editTextCommand"
+                    android:layout_width="300dp"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/buttonConnect"
+                    android:layout_marginTop="16dp"
+                    android:hint="Enter Command" />
+
+                <Button
+                    android:id="@+id/buttonSend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/editTextCommand"
+                    android:layout_marginTop="16dp"
+                    android:text="Send" />
+
+                <TextView
+                    android:id="@+id/textViewResponse"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/buttonSend"
+                    android:layout_marginTop="16dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
