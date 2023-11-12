@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/background1">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -11,40 +12,45 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:foregroundGravity="center_vertical|center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/editTextIP"
                     android:layout_width="600dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#E6C1C0C0"
                     android:hint="Enter ESP32 IP" />
 
                 <Button
                     android:id="@+id/buttonConnect"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_below="@id/editTextIP"
-                    android:layout_marginTop="16dp"
                     android:text="Connect" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="50dp"
+                android:background="#DD677C85"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/editTextCommand"
                     android:layout_width="300dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="50dp"
                     android:layout_below="@id/buttonConnect"
-                    android:layout_marginTop="16dp"
                     android:hint="Enter Command" />
 
                 <Button
@@ -52,7 +58,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/editTextCommand"
-                    android:layout_marginTop="16dp"
                     android:text="Send" />
 
                 <TextView
@@ -60,8 +65,79 @@
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
                     android:layout_below="@id/buttonSend"
-                    android:layout_marginTop="16dp" />
+                    android:background="#5D7D8A" />
+
             </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="234dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnRegresar"
+                    android:layout_width="194dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Regresar" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textID"
+                        android:layout_width="326dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#77636363"
+                        android:outlineProvider="bounds"
+                        android:text="Ip actual= "
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <Button
+                android:id="@+id/irControl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ir a Controles" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

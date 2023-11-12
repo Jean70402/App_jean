@@ -55,5 +55,5 @@ dependencies {
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
     implementation ("com.airbnb.android:lottie:4.2.0")
     implementation ("com.squareup.okhttp3:okhttp:4.9.1")
-
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
 }

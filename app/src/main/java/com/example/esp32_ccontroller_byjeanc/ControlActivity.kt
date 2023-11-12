@@ -2,22 +2,13 @@ package com.example.esp32_ccontroller_byjeanc
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.MotionEvent
-import android.view.View
-import android.view.WindowInsets
-import android.view.WindowInsetsController
 import android.view.WindowManager
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import com.example.joystickjhr.JoystickJhr
-import ingenieria.jhr.bluetoothjhr.BluetoothJhr
-import java.io.IOException
 
 class ControlActivity : AppCompatActivity() {
     //lateinit var blue:BluetoothJhr
@@ -48,6 +39,7 @@ class ControlActivity : AppCompatActivity() {
         val distanciaY: TextView = findViewById(R.id.distanciaY)
         val angle: TextView = findViewById(R.id.angle)
         val distancia: TextView = findViewById(R.id.distancia)
+
 
         joystickJhr.setOnTouchListener { view, motionEvent ->
             joystickJhr.move(motionEvent)
@@ -125,7 +117,6 @@ class ControlActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
 
             startActivity(intent)
-
         }
     }
 
