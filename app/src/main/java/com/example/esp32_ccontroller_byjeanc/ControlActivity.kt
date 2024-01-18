@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.SeekBar
 import android.widget.TextView
 import com.example.joystickjhr.JoystickJhr
 
@@ -39,7 +40,7 @@ class ControlActivity : AppCompatActivity() {
         val distanciaY: TextView = findViewById(R.id.distanciaY)
         val angle: TextView = findViewById(R.id.angle)
         val distancia: TextView = findViewById(R.id.distancia)
-
+        val sliderControl: SeekBar = findViewById(R.id.velocidad)
 
         joystickJhr.setOnTouchListener { view, motionEvent ->
             joystickJhr.move(motionEvent)
@@ -74,6 +75,22 @@ class ControlActivity : AppCompatActivity() {
             true
         }
 
+        sliderControl.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                // Enviar el valor a tu ESP32 aquí (por ejemplo, a través de Bluetooth o WiFi)
+                // Puedes usar el valor 'progress' entre 0 y 255
+                val valor = progress.toByte()  // Convierte a byte si es necesario
+                BluetoothManagerMine.sendCommand(MainActivity.m_bluetoothSocket, "S$valor")
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+                // Acciones al comenzar a tocar el control deslizante
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                // Acciones al dejar de tocar el control deslizante
+            }
+        })
 
         // Botones de control de luces y envío de mensajes
         idBtnLuz_1on.setOnClickListener {
