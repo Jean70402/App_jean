@@ -11,6 +11,7 @@ object BluetoothManagerMine {
     fun connect(address: String): BluetoothSocket? {
         try {
             val device = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(address)
+            //
             val socket = device.createRfcommSocketToServiceRecord(m_myUUID)
             socket.connect()
             return socket
