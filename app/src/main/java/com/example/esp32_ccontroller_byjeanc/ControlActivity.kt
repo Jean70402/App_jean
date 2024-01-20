@@ -4,17 +4,22 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
+import android.view.MotionEvent
+import android.view.View
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
+import com.example.esp32_ccontroller_byjeanc.MainActivity.Companion.m_bluetoothSocket
 import com.example.joystickjhr.JoystickJhr
 
 class ControlActivity : AppCompatActivity() {
     //lateinit var blue:BluetoothJhr
     var dir_anterior = 0
-
+    private var handler: Handler = Handler()
+    private var runnable: Runnable? = null
     @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +46,7 @@ class ControlActivity : AppCompatActivity() {
         val angle: TextView = findViewById(R.id.angle)
         val distancia: TextView = findViewById(R.id.distancia)
         val sliderControl: SeekBar = findViewById(R.id.velocidad)
+        var ultimoValorEnviado: Byte = 0
 
         joystickJhr.setOnTouchListener { view, motionEvent ->
             joystickJhr.move(motionEvent)
@@ -77,10 +83,7 @@ class ControlActivity : AppCompatActivity() {
 
         sliderControl.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                // Enviar el valor a tu ESP32 aquí (por ejemplo, a través de Bluetooth o WiFi)
-                // Puedes usar el valor 'progress' entre 0 y 255
-                val valor = progress.toByte()  // Convierte a byte si es necesario
-                BluetoothManagerMine.sendCommand(MainActivity.m_bluetoothSocket, "S$valor")
+
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -88,10 +91,14 @@ class ControlActivity : AppCompatActivity() {
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {
-                // Acciones al dejar de tocar el control deslizante
+                val valor = seekBar.progress.toByte()
+                ultimoValorEnviado = valor
+                BluetoothManagerMine.sendCommand(MainActivity.m_bluetoothSocket, "$valor")
             }
         })
 
+
+        /*
         // Botones de control de luces y envío de mensajes
         idBtnLuz_1on.setOnClickListener {
             BluetoothManagerMine.sendCommand(
@@ -117,6 +124,7 @@ class ControlActivity : AppCompatActivity() {
                 "D"
             )
         }
+        */
 
 
 //        idBtnEnviar.setOnClickListener {
@@ -135,7 +143,39 @@ class ControlActivity : AppCompatActivity() {
 
             startActivity(intent)
         }
+        setupButton(idBtnLuz_1on, "A")
+        setupButton(idBtnLuz_1off, "B")
+        setupButton(idBtnLuz_2on, "C")
+        setupButton(idBtnLuz_2off, "D")
     }
+    private fun setupButton(button: View, command: String) {
+        button.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> startSendingCommand(command)
+                MotionEvent.ACTION_UP -> stopSendingCommand()
+            }
+            true
+        }
+    }
+    private fun startSendingCommand(command: String) {
+        stopSendingCommand() // Detener cualquier envío previo para evitar duplicaciones
+
+        runnable = object : Runnable {
+            override fun run() {
+                BluetoothManagerMine.sendCommand(m_bluetoothSocket, command)
+                handler.postDelayed(this, 20) // Ajusta según tus necesidades
+            }
+        }
+        handler.post(runnable!!)
+    }
+    private fun stopSendingCommand() {
+        if (runnable != null) {
+            handler.removeCallbacks(runnable!!)
+            runnable = null
+            BluetoothManagerMine.sendCommand(MainActivity.m_bluetoothSocket, "N")
+        }
+    }
+}
 
 
 //    private fun sendCommand(input: String) {
@@ -148,5 +188,3 @@ class ControlActivity : AppCompatActivity() {
 //        }
 //    }
 
-
-}
